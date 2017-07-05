@@ -44,6 +44,7 @@ import javax.swing.JPanel;
  */
 public class ViewTransformador {
 
+	private static final String VERSION = "3.0";
 	private JFrame frame;
 	private JTextPane textPane = new JTextPane();
 	JLabel lblTextoCopiado = new JLabel("Texto copiado");
@@ -52,9 +53,14 @@ public class ViewTransformador {
 	private static void vencimiento() {
 	//	Date fecha = new Date();
 		Calendar c = Calendar.getInstance();
+		String m = String.valueOf(c.get(Calendar.MONTH));
+		
+	//	System.out.println(m +" / "+ String.valueOf(c.get(Calendar.DATE)));
 	//	if(fecha.toString().substring(3, 8).equals(" Mar ") && 	Integer.parseInt(fecha.toString().substring(8, 10))>29){
-		if(c.get(Calendar.MONTH)>6 && c.get(Calendar.DATE)>29 ){
-			JOptionPane.showMessageDialog(new JPanel(), "La versión caducó. Cotáctese con Leo para tener la nueva versión", "Error", JOptionPane.ERROR_MESSAGE);		  
+		if(c.get(Calendar.MONTH)>7 ){// && c.get(Calendar.DATE)>29 ){
+			String msg = "La versión caducó. Cotáctese con Leo para tener la nueva versión";
+			msg = "Error. Cotáctese con Leo";
+			JOptionPane.showMessageDialog(new JPanel(), msg, "Error", JOptionPane.ERROR_MESSAGE);		  
 			System.exit(0); 		//final date
 		}
 	}
@@ -159,7 +165,8 @@ public class ViewTransformador {
 		btnSalir.setBounds(504, 37, 60, 23);
 		panel.add(btnSalir);
 		
-		JLabel lblVersin = new JLabel("Versi\u00F3n 2");
+		JLabel lblVersin = new JLabel("Versi\u00F3n ");
+		lblVersin.setText(lblVersin.getText()+ VERSION);
 		lblVersin.setHorizontalAlignment(SwingConstants.CENTER);
 		lblVersin.setForeground(Color.WHITE);
 		lblVersin.setFont(new Font("Tahoma", Font.PLAIN, 12));
