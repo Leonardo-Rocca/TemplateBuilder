@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+{{# partial "contenido" }}	  
+
+
+	<main class="main-container" role="main">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+                
+                    <!-- contenido principal -->
+
+				<h2>Aca aparecerá el texto transformado</h2>
+          <div class="col-lg-7">
+             <textarea id=text-1 rows="10" cols="150">{{converted}} </textarea>
+           </div>
+
+          <!--
+         <textarea id=text-2> </textarea>
+                </div>
+         <button  onclick="myFunction()" id=btn>Generar</button>
+
+
+                <div class="right">
+                    <a href="/generate/<script> document.getElementById('text-1') </script>" class="btn btn-danger">Borrar</a>   
+                   
+                         <a href="<?php echo $helper->url("usuarios","borrar"); ?>&id=<?php echo $user->id; ?>" class="btn btn-danger">Borrar</a>
+                -->
+                </div>
+			
+            </div>
+		</div>
+<form action="/generar" method="POST" >
+  <h2>ingresar texto HTML</h2>
+  <textarea id="message" name="message" rows="10" cols="30"></textarea>
+  <br>
+ <!--  <input type="submit"> -->
+    <button class="btn btn-primary btn-lg btn-primary btn-block" type="submit">Crear</button>
+</form>
+
+
+<!-- 
+
+<form class="form-signin">
+<div class="col-sm-6 col-md-4 col-md-offset-4">
+      
+        
+        <label for="inputText" class="sr-only">Ingresar texto</label>
+<input type="text" id="inputText" class="form-control" placeholder="Nombre" required="" autofocus="">
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Crear</button>
+      </form>
+    </div>
+-->
+
+	</main>
+
+    <!-- bloques de codigo a clonar -->
+    <div id="template" style="display: none">
+        <!-- estructuras a clonar -->
+    </div>
+{{/partial}}
+
+{{> layout.hbs }}

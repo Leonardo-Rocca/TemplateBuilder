@@ -31,22 +31,22 @@ public  class FilterController implements Filtro{
 		
 		int indexOf = linea.indexOf('$');
 		
-		if(linea.contains("(Actuación): $")&&linea.contains("_act!")){
+		if(linea.contains("(ActuaciÃ³n): $")&&linea.contains("_act!")){
 	
 		 label = linea.substring(0, indexOf-13);
 		label = label.concat(":");
 			actuacion = linea.substring(indexOf,linea.length()-6); 
 			return 1;
 		}
-		if(linea.contains("(Año): $")&&linea.contains("_anio?c")){
+		if(linea.contains("(AÃ±o): $")&&linea.contains("_anio?c")){
 			anio = linea.substring(indexOf,linea.length()-6); 
 			return 2;
 		}
-		if(linea.contains("(Número): $")&&linea.contains("_nro?c")){
+		if(linea.contains("(NÃºmero): $")&&linea.contains("_nro?c")){
 			num = linea.substring(indexOf,linea.length()-6); 
 			return 3;
 		}
-		if(linea.contains("(Repartición): $")&&linea.contains("_rep!")){
+		if(linea.contains("(ReparticiÃ³n): $")&&linea.contains("_rep!")){
 			repa = linea.substring(indexOf,linea.length()-6); 
 			return 4;
 		}

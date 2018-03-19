@@ -44,7 +44,7 @@ import javax.swing.JPanel;
  */
 public class ViewTransformador {
 
-	private static final String VERSION = "3.0";
+	private static final String VERSION = "3.1";
 	private JFrame frame;
 	private JTextPane textPane = new JTextPane();
 	JLabel lblTextoCopiado = new JLabel("Texto copiado");
@@ -57,9 +57,9 @@ public class ViewTransformador {
 		
 	//	System.out.println(m +" / "+ String.valueOf(c.get(Calendar.DATE)));
 	//	if(fecha.toString().substring(3, 8).equals(" Mar ") && 	Integer.parseInt(fecha.toString().substring(8, 10))>29){
-		if(c.get(Calendar.MONTH)>7 ){// && c.get(Calendar.DATE)>29 ){
-			String msg = "La versión caducó. Cotáctese con Leo para tener la nueva versión";
-			msg = "Error. Cotáctese con Leo";
+		if(c.get(Calendar.MONTH)>10 ){// && c.get(Calendar.DATE)>29 ){
+			String msg = "La versiï¿½n caducï¿½.";
+			msg = "Error.";
 			JOptionPane.showMessageDialog(new JPanel(), msg, "Error", JOptionPane.ERROR_MESSAGE);		  
 			System.exit(0); 		//final date
 		}
@@ -91,7 +91,7 @@ public class ViewTransformador {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.getContentPane().setBackground(SystemColor.menu);
+	//	frame.getContentPane().setBackground(SystemColor.menu);
 		frame.setBounds(100, 100, 621, 540);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
@@ -143,13 +143,13 @@ public class ViewTransformador {
 				clean();
 			}
 		});
-		btnClean.setIcon(new ImageIcon(ViewTransformador.class.getResource("/com/sun/javafx/scene/web/skin/FontBackgroundColor_16x16_JFX.png")));
+		btnClean.setIcon(new ImageIcon(ViewTransformador.class.getResource("/com/sun/java/swing/plaf/windows/icons/File.gif")));
 		btnClean.setBounds(75, 417, 48, 40);
 		frame.getContentPane().add(btnClean);
 		
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(0, 102, 153));
-		panel.setBounds(0, 0, 605, 71);
+		panel.setBounds(0, 0, 619, 71);
 		frame.getContentPane().add(panel);
 		panel.setLayout(null);
 		
@@ -162,11 +162,11 @@ public class ViewTransformador {
 		btnSalir.setHorizontalAlignment(SwingConstants.LEFT);
 		btnSalir.setForeground(Color.WHITE);
 		btnSalir.setBackground(new Color(0, 102, 153));
-		btnSalir.setBounds(504, 37, 60, 23);
+		btnSalir.setBounds(504, 37, 85, 23);
 		panel.add(btnSalir);
 		
 		JLabel lblVersin = new JLabel("Versi\u00F3n ");
-		lblVersin.setText(lblVersin.getText()+ VERSION);
+		lblVersin.setText("VersiÃ³n 3.1");
 		lblVersin.setHorizontalAlignment(SwingConstants.CENTER);
 		lblVersin.setForeground(Color.WHITE);
 		lblVersin.setFont(new Font("Tahoma", Font.PLAIN, 12));
@@ -177,7 +177,7 @@ public class ViewTransformador {
 		
 		JLabel lblNewLabel = new JLabel("\u00A9 2017 - Leo Rocca");
 		lblNewLabel.setEnabled(false);
-		lblNewLabel.setBounds(40, 477, 129, 14);
+		lblNewLabel.setBounds(40, 477, 192, 14);
 		frame.getContentPane().add(lblNewLabel);
 		
 		JButton btno = new JButton("\u00ACO");
@@ -189,14 +189,15 @@ public class ViewTransformador {
 		btno.setBounds(477, 417, 55, 40);
 		frame.getContentPane().add(btno);
 		
-		JButton btnPlantilla = new JButton("Plantilla");
+		JButton btnPlantilla = new JButton("");
+		btnPlantilla.setIcon(new ImageIcon(ViewTransformador.class.getResource("/com/sun/java/swing/plaf/windows/icons/Computer.gif")));
 		btnPlantilla.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				irAPlantilla();
 			}
 		});
-		btnPlantilla.setIcon(new ImageIcon(ViewTransformador.class.getResource("/com/sun/javafx/scene/control/skin/modena/HTMLEditor-Indent-Black.png")));
-		btnPlantilla.setBounds(389, 417, 55, 40);
+	//	btnPlantilla.setIcon(new ImageIcon(ViewTransformador.class.getResource("/com/sun/javafx/scene/control/skin/modena/HTMLEditor-Indent-Black.png")));
+		btnPlantilla.setBounds(389, 417, 76, 40);
 		frame.getContentPane().add(btnPlantilla);
 	}
 
@@ -220,7 +221,8 @@ public class ViewTransformador {
 	protected void convert(Filtro filtro) {
 
 	//	Filtro f = new filterPlantilla(); 
-		textPane.setText(LeeFichero.readText(textPane.getText(), filtro));	
+		String text = textPane.getText();
+		textPane.setText(convertService(filtro, text));	
 	/*	try {
 			new GenerarArchivoWord().replaceTextFound("", 0, "leo", "texto",(filterPlantilla) f);
 		} catch (IOException e) {
@@ -229,9 +231,19 @@ public class ViewTransformador {
 		}
 */
 		textPane.selectAll();
-		StringSelection stringSelection = new StringSelection(textPane.getText());
+		StringSelection stringSelection = new StringSelection(text);
 		Clipboard clpbrd = Toolkit.getDefaultToolkit().getSystemClipboard();
 		clpbrd.setContents(stringSelection, null);
 		lblTextoCopiado.setVisible(true);
 	}
+
+	public String convertService(Filtro filtro, String text) {
+		if(filtro==null)filtro=new FilterController();
+		return LeeFichero.readText(text, filtro);
+	}	
+	public String convertService(String text) {
+		return convertService(new FilterController(),text); 
+	}
+	
+	
 }

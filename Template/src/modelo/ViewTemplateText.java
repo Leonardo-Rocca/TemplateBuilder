@@ -106,7 +106,7 @@ public class ViewTemplateText {
 				convert();
 			}
 		});
-		btnConvertir.setBounds(225, 409, 154, 48);
+		btnConvertir.setBounds(302, 417, 154, 48);
 
 		lblTextoCopiado.setBackground(Color.BLACK);
 		lblTextoCopiado.setForeground(Color.BLACK);
@@ -128,13 +128,13 @@ public class ViewTemplateText {
 				clean();
 			}
 		});
-		btnClean.setIcon(new ImageIcon(ViewTransformador.class.getResource("/com/sun/javafx/scene/web/skin/FontBackgroundColor_16x16_JFX.png")));
+		btnClean.setIcon(new ImageIcon(ViewTemplateText.class.getResource("/javax/swing/plaf/metal/icons/ocean/file.gif")));
 		btnClean.setBounds(23, 417, 48, 40);
 		frame.getContentPane().add(btnClean);
 		
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(0, 102, 153));
-		panel.setBounds(0, 0, 605, 71);
+		panel.setBounds(0, 0, 619, 71);
 		frame.getContentPane().add(panel);
 		panel.setLayout(null);
 		
@@ -147,10 +147,10 @@ public class ViewTemplateText {
 		btnSalir.setHorizontalAlignment(SwingConstants.LEFT);
 		btnSalir.setForeground(Color.WHITE);
 		btnSalir.setBackground(new Color(0, 102, 153));
-		btnSalir.setBounds(504, 37, 60, 23);
+		btnSalir.setBounds(504, 37, 78, 23);
 		panel.add(btnSalir);
 		
-		JLabel lblVersin = new JLabel("Versi\u00F3n 3.0");
+		JLabel lblVersin = new JLabel("Versi\u00F3n 3.1");
 		lblVersin.setHorizontalAlignment(SwingConstants.CENTER);
 		lblVersin.setForeground(Color.WHITE);
 		lblVersin.setFont(new Font("Tahoma", Font.PLAIN, 12));
@@ -161,7 +161,7 @@ public class ViewTemplateText {
 		
 		JLabel lblNewLabel = new JLabel("\u00A9 2017 - Leo Rocca");
 		lblNewLabel.setEnabled(false);
-		lblNewLabel.setBounds(40, 477, 129, 14);
+		lblNewLabel.setBounds(40, 477, 197, 14);
 		frame.getContentPane().add(lblNewLabel);
 		
 		JButton btnAddVars = new JButton("Agregar variables");
@@ -170,7 +170,7 @@ public class ViewTemplateText {
 				addVars();
 			}
 		});
-		btnAddVars.setBounds(415, 417, 138, 40);
+		btnAddVars.setBounds(506, 417, 71, 40);
 		btnAddVars.setVisible(false);
 		frame.getContentPane().add(btnAddVars);
 		
@@ -191,7 +191,7 @@ public class ViewTemplateText {
 		frame.getContentPane().add(lblSeparador);
 		
 		 lbEj = new JLabel("Ej: 18"+txtSeparador.getText()+"Primer Nombre");
-		lbEj.setBounds(257, 85, 146, 17);
+		lbEj.setBounds(257, 85, 214, 17);
 		frame.getContentPane().add(lbEj);
 		
 		 lblVariablesAgregadas = new JLabel("Variables");
@@ -199,7 +199,7 @@ public class ViewTemplateText {
 		frame.getContentPane().add(lblVariablesAgregadas);
 		
 		chkRepetidos = new JCheckBox("Eliminar repetidos");
-		chkRepetidos.setBounds(91, 434, 120, 23);
+		chkRepetidos.setBounds(91, 434, 171, 23);
 		frame.getContentPane().add(chkRepetidos);
 		
 		JLabel lblTemplate = new JLabel("Template");
